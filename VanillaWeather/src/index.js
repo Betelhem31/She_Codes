@@ -18,6 +18,9 @@ function refreshWeather(response) {
   //TODO:google how to format date "js parse timestamp"
   let timeElement = document.querySelector("#time");
   timeElement.innerHTML = formatDay(date);
+
+  let iconElement = document.querySelector("#icon");
+  iconElement.innerHTML = `<img src="${response.data.condition.icon_url}" alt="${response.data.condition.description}" />`;
 }
 
 function formatDay(date) {
@@ -46,7 +49,32 @@ function handleSearchSubmit(event) {
   searchCity(SearchInput.value);
 }
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+
+  let days = ["Tue", "Wed", "Thu", "Fri", "Sat"];
+  let forecastHtml = "";
+  days.forEach(function (day) {
+    forecastHtml =
+      forecastHtml +
+      `
+    <div class="weather-forcast-day">
+      <div class="weather-forcast-date">${day}</div>
+      <div class="weather-forcast-icon">🌨</div>
+      <div class="weather-forcast-temps">
+        <div class="weather-forcast-temp">
+          <strong>12°</strong>
+        </div>
+        <div class="weather-forcast-temp">7°</div>
+      </div>
+    </div>`;
+  });
+
+  forecastElement.innerHTML = forecastHtml;
+}
+
 let searchFormElement = document.querySelector("#search-form");
 
 searchFormElement.addEventListener("submit", handleSearchSubmit);
 searchCity("Addis Ababa");
+displayForecast();

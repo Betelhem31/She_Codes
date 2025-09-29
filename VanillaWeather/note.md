@@ -7,4 +7,13 @@ weather app
 - Search engine(Basic js)
 - Api integration
 - Forecast
+
+
+
+plan for the forcast section 
+- Design
+- Html
+- CSS
+- Forcast API
+- API Integration
 - 
